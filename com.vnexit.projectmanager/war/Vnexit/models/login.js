@@ -29,7 +29,14 @@ steal('can', function (can) {
 		/**
 		 * Destroy a login
 		 */
-		destroy : "DELETE /logins/{id}"
+		destroy : "DELETE /logins/{id}",
+
+		checkLogin: function(username, password){
+			return $.ajax({
+				url: "/logins?username="+username+"&password="+password,
+				type: "GET"
+			});
+		}
 	},
 	/* @Prototype */
 	{});

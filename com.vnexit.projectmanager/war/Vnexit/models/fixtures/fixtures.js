@@ -7,6 +7,11 @@ steal("can/util/fixture", function(fixture) {
 			description: "login " + i
 		}
 	});
+
+	var res= {
+		'status': 200,
+		'messagse': "Success",
+	};
 	
 	fixture({
 		'GET /logins' : store.findAll,
@@ -16,5 +21,8 @@ steal("can/util/fixture", function(fixture) {
 		'DELETE /logins/{id}' : store.destroy
 	});
 
+	can.fixture( "GET /logins?username=admin&password=1234", "../models/fixtures/data/loginTest.json" );
+
 	return store;
+
 });
