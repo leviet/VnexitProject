@@ -32,12 +32,10 @@ steal('can', function (can) {
 		destroy : "DELETE /logins/{id}",
 
 		checkLogin: function(username, password){
-			var result={};
-			result.status=200;
-			result.messagse="Dang nhap thanh cong";
-			result.role="admin";
-			result.username=username;
-			return result;
+			return $.ajax({
+				url: "/action=login?username="+username+"?password="+password,
+				type: "GET"
+			});
 		}
 	},
 	/* @Prototype */

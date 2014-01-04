@@ -1,4 +1,4 @@
-steal('can','./init.ejs','Vnexit/Vnexit.js', function(can, initView){
+steal('can','./init.ejs','Vnexit/Vnexit.js','../models/login.js', function(can, initView){
     /**
      * @class Vnexit/login
 	 * @alias Login   
@@ -14,6 +14,11 @@ steal('can','./init.ejs','Vnexit/Vnexit.js', function(can, initView){
 			this.element.html(initView({
 				message: "Hello World from Login"
 			}));
+		},
+		".form-horizontal submit": function(el,ev){
+			var formData = $(".form-horizontal").formParams();
+			var login = new Login();
+			login.checkLogin(formData.username, formData.password);
 		}
 	});
 });
