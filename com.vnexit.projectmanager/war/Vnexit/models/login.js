@@ -33,7 +33,7 @@ steal('can', function (can) {
 
 		checkLogin: function(username, password){
 			return $.ajax({
-				url: "/action=login?username="+username+"?password="+password,
+				url: "/logins?username="+username+"&password="+password,
 				type: "GET"
 			});
 		}

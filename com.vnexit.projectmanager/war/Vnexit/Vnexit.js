@@ -6,5 +6,4 @@ steal('can',
 	'./models/fixtures/fixtures.js',
 	'jquerypp/dom/form_params',
 function(LoginCreate, LoginList){
-	
 })

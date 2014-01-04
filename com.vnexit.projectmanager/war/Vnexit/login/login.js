@@ -1,4 +1,4 @@
-steal('can','./init.ejs','Vnexit/Vnexit.js','../models/login.js', function(can, initView){
+steal('can','./init.ejs','Vnexit/Vnexit.js','Vnexit/models/login.js', function(can, initView,Vnexit, Login){
     /**
      * @class Vnexit/login
 	 * @alias Login   
@@ -6,7 +6,9 @@ steal('can','./init.ejs','Vnexit/Vnexit.js','../models/login.js', function(can, 
     return can.Control(
 	/** @Static */
 	{
-		defaults : {}
+		defaults : {
+			login: Login
+		}
 	},
 	/** @Prototype */
 	{
@@ -16,9 +18,16 @@ steal('can','./init.ejs','Vnexit/Vnexit.js','../models/login.js', function(can, 
 			}));
 		},
 		".form-horizontal submit": function(el,ev){
+			ev.preventDefault();
 			var formData = $(".form-horizontal").formParams();
-			var login = new Login();
-			login.checkLogin(formData.username, formData.password);
+			var result = this.options.login.checkLogin(formData.username, formData.password);
+			result.done(function(data){
+				data = JSON.parse(data);
+				alert("Dang nhap thanh cong, xin chao"+ data.username);
+			});
+			result.fail(function(){
+				alert("Sai ten dang nhap hoac mat khau");
+			});
 		}
 	});
 });

@@ -20,8 +20,9 @@ steal("can/util/fixture", function(fixture) {
 		'PUT /logins/{id}' : store.update,
 		'DELETE /logins/{id}' : store.destroy
 	});
-	can.fixture("GET /action=login?username=admin&password=1234", function(original, response){
-    response(200, "success", { json: {foo: "bar" } }, {})
-  });
+
+	can.fixture( "GET /logins?username=admin&password=1234", "../models/fixtures/data/loginTest.json" );
+
 	return store;
+
 });
