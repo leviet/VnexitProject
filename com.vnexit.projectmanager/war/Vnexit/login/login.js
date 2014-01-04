@@ -1,4 +1,4 @@
-steal('can','./init.ejs', function(can, initView){
+steal('can','./init.ejs','Vnexit/Vnexit.js', function(can, initView){
     /**
      * @class Vnexit/login
 	 * @alias Login   
